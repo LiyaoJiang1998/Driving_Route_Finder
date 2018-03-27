@@ -1,0 +1,137 @@
+Student Name: Liyao Jiang
+Student ID: 1512445
+Section: EB1
+Student Name: Xiaolei Zhang
+Student ID: 1515335
+Section: B1
+
+Assignment1 Part2
+
+---------------------------------------------------------------
+Description:
+
+For this part of the assignment, we updated the server side of the
+program. So it uses Serial port to communicate with Arduino Client
+
+Receives two pairs of (lat,lon) as start and end point from client
+
+It will find the nearest start and end vertex.
+And using Dikstra's to find the least-cost-path.
+
+It will then send back the waypoints coordinates of the path
+to the client.
+
+The Arduino Client side was implemented in this part.
+We implemented the communication part and the storing of waypoint
+number and waypoints.
+
+The program sends Request after getting start and end from the user.
+And write to Serial to the server.This program use the protocol given.
+So when it gets all the waypoints from the server, it will draw the path
+and wait for the user's next selection. After the path is drawn, the 
+path will be redrawn when you move the map around or zoom.
+
+----------------------------------------------------------------
+Files in the zip and where to look:
+
+README - this file
+
+Server:(python program)
+	The main server file:
+		server.py (We wrote originally)
+
+	List of files(We created from part 1):
+		load_edmonton_graph.py
+		costdistance.py
+		least_cost_path.py
+
+	List of files(Implemented in class):
+		binary_heap.py(deleted the visualization part)
+		breadth_first_search.py
+		graph.py
+
+Other files needed not in the zip:
+	edmonton-roads-2.0.1.txt
+
+Make sure you have all the file listed above
+in the same directory!
+
+Client:(Arduino C++ program)
+	The main client file:
+		client.cpp (provided template by instructor)
+		(Only the places commented Original and TODO
+		is wrote by us)
+
+	List of files(Implemented in class):
+	 - Makefile
+	 - client.cpp
+	 - consts_and_types.h
+	 - lcd_image.h and .cpp
+	 - map_drawing.h and .cpp
+
+
+Make sure you have all the file listed above
+in the same directory!
+
+---------------------------------------------------------------
+Wiring needed for this part 2 of Assignment1 !
+
+NOTE: In addition to this wiring you also have to download the .lcd files
+from eClass and put them on your SD card (after unzipping them).
+
+TFT Display:
+
+    The display pins are numbered left to right in this document when they are being viewed
+    with their labels showing rightside up. Note you do not require the touchscreen for this assignment,
+    so it is probably a lot easier to not wire the Y+/X+/Y-/X- pins.
+
+    Display Pin     Arduino Mega Pin
+    1 GND           BB GND bus
+    2 Vin           BB Vcc (+ive) bus
+
+    4 CLK           Pin 52
+    5 MISO          Pin 50
+    6 MOSI          Pin 51
+    7 CS            Pin 10
+    8 D/C           Pin 9
+
+    19 CCS          Pin 6
+
+Zoom in and out buttons:
+
+    Button          Arduino Mega Pin
+    Zoom In         Pin 2
+    Zoom Out        Pin 3
+
+Joystick connections:
+
+    Joystick Pin    Arduino Mega Pin
+    +5v             Vcc
+    GND             GND
+    VRx             Analog 1
+    VRy             Analog 0
+    SW              Pin 8
+
+
+---------------------------------------------------------------
+Running instruction:
+
+server side:
+	direct into the server folder
+	run the server.py as main program by
+	using  python3 server.py command in terminal
+	
+client side:
+	direct into the client folder
+	connect your arduino to computer and make uplaod
+	the client program
+
+Keep the server side terminal running
+and move cursor and select start and end point by joystick
+
+After selected start and end
+the route will be drawed on display shortly
+
+Use the Zoom In and Zoom Out buttons to adjust zoom level
+
+---------------------------------------------------------------
